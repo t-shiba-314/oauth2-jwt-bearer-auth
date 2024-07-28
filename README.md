@@ -13,12 +13,12 @@ Create a `.env` file in the root directory of the project by copying the provide
 cp .env.template .env
 ```
 
-# Build the images
+## Build the images
 ```bash
 docker compose build
 ```
 
-# Start the containers
+## Start the containers
 ```bash
 docker compose up
 ```
