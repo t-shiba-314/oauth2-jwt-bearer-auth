@@ -1,6 +1,7 @@
 # FastAPI Template
 
 This project can be easily set up and run by following the steps below.
+Please customize it according to your project needs.
 
 ## Prerequisites
 
