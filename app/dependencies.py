@@ -1,4 +1,7 @@
+from fastapi import Depends
+from sqlalchemy.orm import Session
 from database import SessionLocal
+from services import UserService
 
 def get_db():
     db = SessionLocal()
@@ -6,3 +9,6 @@ def get_db():
         yield db
     finally:
         db.close()
+
+def get_user_service(db: Session = Depends(get_db)):
+    return UserService(db)
