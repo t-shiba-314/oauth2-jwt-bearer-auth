@@ -5,7 +5,7 @@ from auth import create_access_token, verify_password
 from schemas import UserOutSchema, UserCreateSchema, UserTokenSchema
 from services import UserService
 
-router = APIRouter(prefix='/users', tags=['users'])
+router = APIRouter(tags=['users'])
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl='token')
 

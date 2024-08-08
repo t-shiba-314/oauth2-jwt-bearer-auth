@@ -26,6 +26,7 @@ cp env.template .env
 2. Open the `.env` file and fill in the necessary values, such as database credentials and JWT secret key.
 
 - How to create a secret key(https://fastapi.tiangolo.com//tutorial/security/oauth2-jwt/#handle-jwt-tokens)
+
 ### Building and Running the Application
 
 1. Build the Docker images:
@@ -44,8 +45,8 @@ The API will be available at `http://localhost:8000`. You can access the API doc
 
 ## API Endpoints
 
-- `/users/register` - Register a new user
-- `/users/login` - User login and token generation
+- `/api/register` - Register a new user
+- `/api/login` - User login and token generation
 
 For detailed API documentation, please refer to the Swagger UI at `/docs` endpoint when the server is running.
 
@@ -53,7 +54,7 @@ For detailed API documentation, please refer to the Swagger UI at `/docs` endpoi
 
 ### User Registration
 
-To register a new user, send a POST request to `/users/register` with the following JSON body:
+To register a new user, send a POST request to `/api/register` with the following JSON body:
 
 ```json
 {
@@ -64,7 +65,7 @@ To register a new user, send a POST request to `/users/register` with the follow
 
 ### User Login
 
-To log in and receive an access token, send a POST request to `/users/login` with form-data containing:
+To log in and receive an access token, send a POST request to `/api/login` with form-data containing:
 
 - `username`: The user's email address
 - `password`: The user's password
