@@ -25,6 +25,7 @@ cp env.template .env
 
 2. Open the `.env` file and fill in the necessary values, such as database credentials and JWT secret key.
 
+- How to create a secret key(https://fastapi.tiangolo.com//tutorial/security/oauth2-jwt/#handle-jwt-tokens)
 ### Building and Running the Application
 
 1. Build the Docker images:
