@@ -41,7 +41,7 @@ docker compose build
 docker compose up
 ```
 
-The API will be available at `http://localhost:8000`. You can access the API documentation at `http://localhost:8000/docs`.
+The API will be available at `http://localhost:8080`. You can access the API documentation at `http://localhost:8080/docs`.
 
 ## API Endpoints
 
