@@ -2,13 +2,12 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from dependencies import get_user_service
 from auth import create_access_token, verify_password
-from schemas import UserOutSchema, UserCreateSchema, UserTokenSchema
+from schemas import UserOutSchema, UserCreateSchema, UserTokenSchema, UserResetPasswordResponseSchema, UserResetPasswordSchema
 from services import UserService
 
 router = APIRouter(tags=['users'])
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl='token')
-
 
 @router.post('/register', response_model=UserOutSchema)
 def register(user: UserCreateSchema, user_service: UserService = Depends(get_user_service)):
@@ -30,3 +29,12 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), user_service: UserSe
         )
     access_token = create_access_token(data={'sub': db_user.email})
     return UserTokenSchema(access_token=access_token, token_type="bearer")
+
+@router.post('/reset-password', response_model=UserResetPasswordResponseSchema)
+def reset_password(request: UserResetPasswordSchema, user_service: UserService = Depends(get_user_service)):
+    if user_service.reset_password(request.token, request.new_password):
+        return UserResetPasswordResponseSchema(message='Password successfully updated.')
+    raise HTTPException(
+        status_code=status.HTTP_400_BAD_REQUEST,
+        detail='Password update failed. Token may be invalid or expired.'
+    )

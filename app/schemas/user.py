@@ -14,3 +14,10 @@ class UserCreateSchema(BaseModel):
 class UserTokenSchema(BaseModel):
     access_token: str
     token_type: str
+
+class UserResetPasswordResponseSchema(BaseModel):
+    message: str
+
+class UserResetPasswordSchema(BaseModel):
+    token: str
+    new_password: str
