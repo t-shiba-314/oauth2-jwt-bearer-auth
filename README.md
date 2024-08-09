@@ -47,31 +47,10 @@ The API will be available at `http://localhost:8080`. You can access the API doc
 
 - `/api/register` - Register a new user
 - `/api/login` - User login and token generation
+- `/api/reset-password` - Reset password
 
 For detailed API documentation, please refer to the Swagger UI at `/docs` endpoint when the server is running.
 
-## API Usage
-
-### User Registration
-
-To register a new user, send a POST request to `/api/register` with the following JSON body:
-
-```json
-{
-  "email": "user@example.com",
-  "password": "securepassword"
-}
-```
-
-### User Login
-
-To log in and receive an access token, send a POST request to `/api/login` with form-data containing:
-
-- `username`: The user's email address
-- `password`: The user's password
-
-The response will include an access token that can be used for authenticated requests.
-
 ## Customization
 
-This template provides a basic structure for user authentication. You can extend it by adding more features such as user profile management, password reset functionality, or additional security measures.
+This template provides a basic structure for user authentication. You can extend it by adding more features such as user profile management, and additional security measures.
