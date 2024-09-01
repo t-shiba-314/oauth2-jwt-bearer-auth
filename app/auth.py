@@ -1,7 +1,9 @@
 import os
-from passlib.context import CryptContext
-from jose import jwt, JWTError
 from datetime import datetime, timedelta
+
+from fastapi import HTTPException, status
+from jose import JWTError, jwt
+from passlib.context import CryptContext
 
 pwd_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
 SECRET_KEY = os.getenv('SECRET_KEY')
@@ -27,3 +29,13 @@ def decode_token(token: str):
         return payload
     except JWTError:
         return None
+
+def verify_token(token: str):
+    payload = decode_token(token=token)
+    email = payload.get('sub')
+    exp = payload.get('exp')
+    if email is None:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Invalid token')
+    if exp is None or datetime.utcfromtimestamp(exp) < datetime.utcnow():
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Token expired')
+    return payload

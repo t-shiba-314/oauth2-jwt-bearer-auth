@@ -8,3 +8,8 @@ passlib[bcrypt]
 python-jose[cryptography]
 python-multipart
 email-validator
+isort
+flake8
+black
+llama-index
+pypdf
